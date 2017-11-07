@@ -3,7 +3,6 @@ var schedule = require('node-schedule');
 const smsTrigger = require('./itemController').smsMessage;
 
 //functions to add fridges, get fridges, and delete fridges from the database using promises
-
 module.exports = {
   addFridge: (req, res) => {
     Fridge.create({

@@ -22,6 +22,13 @@ app.use(cors());
 // Routes
 app.use(express.static(path.resolve(__dirname, '../client/public')));
 app.use('/api', routes);
+
+app.get('*.js', (req, res, next) => {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'));
 })
